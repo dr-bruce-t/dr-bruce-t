@@ -13,7 +13,7 @@
   --ph-a:   #d8d4c8;   /* placeholder photo tones */
   --ph-b:   #c4c0b4;
   --sans: "Cabin", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --serif: "Instrument Serif", Georgia, serif;
+  --serif: "Lora", Georgia, serif; /* index page only */
   --ease: cubic-bezier(.19, 1, .22, 1);
 }
 
@@ -125,6 +125,16 @@ body.is-loaded .line:nth-child(2) > span { transition-delay: .08s; }
 body.is-loaded .float-clip { clip-path: inset(0 0 0 0); }
 .float { top: 2%; right: 2%; width: clamp(450px, 40vw, 700px); }
 body.is-loaded .float-clip { transition-delay: .55s; }
+
+/* the overlapping-photo treatment needs real horizontal room to work;
+   on phones, drop the overlap and stack a smaller photo under the
+   title instead (still fades in the same way). */
+@media (max-width: 640px) {
+  .hero { min-height: auto; padding: 24px 0 56px; }
+  .hero-floats { position: static; inset: auto; order: 2; margin-top: 32px; }
+  .float { position: static; top: auto; right: auto; width: 78%; max-width: 320px; margin: 0 auto; }
+  .hero-title { order: 1; }
+}
 
 /* vertical side text — quiet nod to the reference */
 .vertical {
@@ -241,7 +251,7 @@ a:hover .ph-img::before, a:hover .ph-img img { transform: scale(1.045); }
 }
 .page-head .lede {
   margin-top: 26px; max-width: 52ch; color: var(--soft);
-  font-family: var(--serif); font-size: 1.05rem; line-height: 1.8;
+  font-family: var(--sans); font-style: italic; font-size: 1.05rem; line-height: 1.8;
 }
 
 /* gallery — no captions, no text: the photos and the space between them.
@@ -296,7 +306,7 @@ a:hover .ph-img::before, a:hover .ph-img img { transform: scale(1.045); }
 }
 .cv-row:last-child { border-bottom: 1px solid var(--line); }
 .cv-row h3 { font-weight: 400; font-size: 1.2rem; letter-spacing: -.01em; }
-.cv-row h3 em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+.cv-row h3 em { font-family: var(--sans); font-style: italic; font-weight: 500; }
 .cv-row p { color: var(--soft); font-size: .88rem; margin-top: 6px; }
 .cv-row .tag {
   flex: 0 0 auto;
@@ -316,7 +326,7 @@ a:hover .ph-img::before, a:hover .ph-img img { transform: scale(1.045); }
 .pubs li:last-child { border-bottom: 1px solid var(--line); }
 .pubs a {
   color: var(--ink); text-decoration: none;
-  font-family: var(--serif); font-weight: 400; font-size: 1.15rem;
+  font-family: var(--sans); font-style: italic; font-weight: 500; font-size: 1.05rem;
   border-bottom: 1px solid var(--ink); padding-bottom: 1px;
   transition: opacity .3s ease;
 }
@@ -355,7 +365,7 @@ a:hover .ph-img::before, a:hover .ph-img img { transform: scale(1.045); }
 }
 .contact-list a:hover { opacity: .5; }
 .contact-note {
-  font-family: var(--serif); font-weight: 400; font-size: 1.15rem;
+  font-family: var(--sans); font-style: italic; font-size: 1.15rem;
   line-height: 1.8; color: var(--soft); max-width: 40ch;
 }
 
@@ -435,8 +445,14 @@ footer .credit { opacity: .75; }
   .about-row { grid-template-columns: 1fr; gap: 26px; }
   .contact-cols { grid-template-columns: 1fr; gap: 40px; }
 }
+@media (max-width: 640px) {
+  /* wordmark + 4 nav links no longer fit on one line at phone widths;
+     wrap the links onto their own row instead of crowding/clashing. */
+  .nav { flex-wrap: wrap; row-gap: 12px; }
+  .nav-links { width: 100%; justify-content: space-between; gap: 0; }
+  .nav-links a { font-size: .64rem; letter-spacing: .1em; }
+}
 @media (max-width: 560px) {
-  .nav-links { gap: 20px; }
   .section { padding: 70px 0; }
 }
 
