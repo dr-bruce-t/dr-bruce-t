@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Bruce Tsai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cabin:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav">
+    <a class="wordmark" href="index.html">Bruce Tsai</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Index</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-head" style="padding-bottom:0">
+    <h1>Say hello</h1>
+  </header>
+
+  <section class="contact-hero">
+    <a class="big-mail" id="em" href="#">
+      <noscript>dr dot bruce dot tsai at gmail dot com</noscript>
+    </a>
+  </section>
+
+  <footer>
+    <span class="credit">Built with Claude</span>
+    <span class="jp">光與影</span>
+    <a href="index.html">Index</a>
+  </footer>
+
+</div>
+<script>
+/* Assemble the address at runtime so it never appears in the page source. */
+(function () {
+  var p = ['ai', 'ts', 'ce.', 'bru', 'dr.'].reverse().join('');
+  var q = ['liamg', 'moc'].map(function (s) { return s.split('').reverse().join(''); }).join('.');
+  var addr = p + String.fromCharCode(64) + q;
+  var el = document.getElementById('em');
+  el.href = 'ma' + 'il' + 'to:' + addr;
+  el.textContent = addr;
+})();
+</script>
+</body>
+</html>
