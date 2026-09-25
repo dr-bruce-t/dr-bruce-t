@@ -92,7 +92,7 @@ body.is-loading { overflow: hidden; }
 }
 .hero-title {
   font-weight: 500; letter-spacing: -.035em; line-height: .96;
-  font-size: clamp(4.4rem, 15.5vw, 13.5rem);
+  font-size: clamp(3.9rem, 13.5vw, 11.8rem);
   text-transform: uppercase;
   position: relative; z-index: 5;
 }
